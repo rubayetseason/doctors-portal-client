@@ -1,0 +1,5 @@
+.bg-chair{
+    background-image: url('/src/assets/images/bg.png');
+    background-repeat: no-repeat;
+    object-fit: cover;
+}
