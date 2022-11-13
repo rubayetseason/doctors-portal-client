@@ -1,5 +1,6 @@
 import React from 'react';
 import Banner from './Banner';
+import ContactUs from './ContactUs';
 import Exceptional from './Exceptional';
 import InfoCards from './InfoCards';
 import MakeAppointment from './MakeApppointment';
@@ -21,6 +22,9 @@ const Home = () => {
             </div>
             <div className='mt-24 px-5 md:px-5 lg:px-5'>
                 <Testimonial></Testimonial>
+            </div>
+            <div className='mt-24'>
+                <ContactUs></ContactUs>
             </div>
             </div>
         </div>
