@@ -19,7 +19,7 @@ const Home = () => {
             <div className='mt-24 md:px-5 lg:px-5'>
                 <Exceptional></Exceptional>
             </div>
-            <div className='mt-1 md:px-5 lg:px-5'>
+            <div className='mt-1  md:px-5 lg:px-5'>
                 <MakeAppointment></MakeAppointment>
             </div>
             <div className='mt-24 px-5 md:px-5 lg:px-5'>
