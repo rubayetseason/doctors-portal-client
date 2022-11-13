@@ -1,11 +1,11 @@
 import React from "react";
 import { format } from "date-fns";
 
-const AvailableAppointments = (selectedDate) => {
+const AvailableAppointments = ({selectedDate}) => {
   return (
     <div>
       <p className="text-center text-secondary font-bold">
-        Available Appointments on
+        Available Appointments on  {format(selectedDate, "PP")}
       </p>
     </div>
   );
