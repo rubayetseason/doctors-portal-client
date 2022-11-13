@@ -4,6 +4,7 @@ import Exceptional from './Exceptional';
 import InfoCards from './InfoCards';
 import MakeAppointment from './MakeApppointment';
 import Services from './Services';
+import Testimonial from './Testimonial';
 
 const Home = () => {
     return (
@@ -17,6 +18,9 @@ const Home = () => {
             </div>
             <div className='mt-1 md:px-5 lg:px-5'>
                 <MakeAppointment></MakeAppointment>
+            </div>
+            <div className='mt-24 px-5 md:px-5 lg:px-5'>
+                <Testimonial></Testimonial>
             </div>
             </div>
         </div>

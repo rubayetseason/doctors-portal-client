@@ -17,7 +17,7 @@ const InfoCards = () => {
         {
             id: 2,
             name: 'Our Locations',
-            description: 'Various locations available throughout Dhaka',
+            description: 'Various locations available throughout California',
             icon: marker,
             bgClass: 'bg-accent'
         },
