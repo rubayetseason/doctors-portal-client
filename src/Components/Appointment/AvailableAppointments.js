@@ -21,7 +21,7 @@ const AvailableAppointments = ({ selectedDate }) => {
           appointmentOptions.map(option => <AppointmentOption key={option._id} appointmentOption={option} setTreatment={setTreatment}></AppointmentOption>)
         }
       </div>
-{ treatment &&  <BookingModal treatment={treatment}></BookingModal> }
+{ treatment &&  <BookingModal treatment={treatment} setTreatment={setTreatment} selectedDate={selectedDate}></BookingModal> }
     </div>
   );
 };

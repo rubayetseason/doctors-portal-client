@@ -13,6 +13,7 @@ const AppointmentBanner = ({ selectedDate, setSelectedDate }) => {
             className="w-5/6 md:w-1/2 rounded-lg"
           />
           <div className="">
+            <h1 className="text-xl text-center font-bold text-secondary mt-3 underline">Select a date</h1>
             <DayPicker
               mode="single"
               selected={selectedDate}
