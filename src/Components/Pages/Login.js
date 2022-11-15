@@ -13,7 +13,7 @@ const Login = () => {
   };
 
   return (
-    <div className="h-[400px] mt-10 flex justify-center items-center">
+    <div className="h-[400px] mt-14 flex justify-center items-center">
       <div className="w-96 p-7 mt-14 border-2">
         <h2 className="text-2xl text-center font-bold underline mb-5">Login</h2>
         <form onSubmit={handleSubmit(handleLogin)}>
@@ -66,7 +66,7 @@ const Login = () => {
         <p className="mt-2">
           <small>
             New to Doctor's Portal?{" "}
-            <Link to="/singup" className="text-secondary font-semibold">
+            <Link to="/signup" className="text-secondary font-semibold">
               Create new account
             </Link>
           </small>
