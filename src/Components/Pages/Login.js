@@ -23,7 +23,7 @@ const Login = () => {
               <span className="label-text">Your Email</span>
             </label>
             <input
-              type="text"
+              type="email"
               {...register("email", {
                 required: "Email Address is required",
               })}
