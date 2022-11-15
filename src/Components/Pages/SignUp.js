@@ -10,11 +10,13 @@ const SignUp = () => {
     formState: { errors },
   } = useForm();
 
-  const handleSignUp = () => {};
+  const handleSignUp = (data) => {
+    console.log(data);
+  };
   return (
     <div className="h-[400px] flex justify-center mt-14 mb-20 items-center">
       <div className="w-96 p-7 border-2 mt-14">
-        <h2 className="text-2xl text-center font-bold">Sign Up</h2>
+        <h2 className="text-2xl text-center font-bold underline mb-4">Sign Up</h2>
         <form onSubmit={handleSubmit(handleSignUp)}>
           <div className="form-control w-full max-w-xs">
             <label className="label">
