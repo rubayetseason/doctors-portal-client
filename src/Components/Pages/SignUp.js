@@ -1,17 +1,18 @@
 import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthProvider";
 
 const SignUp = () => {
-  const [signUpError, setSignUPError] = useState("");
+  const [signUpError, setSignUpError] = useState("");
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
-  const { createUser } = useContext(AuthContext);
+  const { createUser, updateUser } = useContext(AuthContext);
 
   const handleSignUp = (data) => {
     console.log(data);
@@ -19,8 +20,19 @@ const SignUp = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
+        setSignUpError("");
+        toast.success("User Created Successfully");
+        const userInfo = {
+          displayName: data.name,
+        };
+        updateUser(userInfo)
+          .then(() => {})
+          .catch((error) => console.log(error));
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        console.log(error);
+        setSignUpError(error.message);
+      });
   };
   return (
     <div className="h-[400px] flex justify-center mt-14 mb-20 items-center">
@@ -88,6 +100,9 @@ const SignUp = () => {
           />
           {signUpError && <p className="text-red-600">{signUpError}</p>}
         </form>
+        <div className="my-4">
+          {signUpError && <p className="text-red-600">{signUpError}</p>}
+        </div>
         <small>
           <p className="mt-2">
             Already have an account?{" "}
