@@ -3,11 +3,12 @@ import { format } from "date-fns";
 import AppointmentOption from "./AppointmentOption";
 import BookingModal from "./BookingModal";
 
+
 const AvailableAppointments = ({ selectedDate }) => {
   const [appointmentOptions, setappointmentOptions] = useState([]);
   const [treatment, setTreatment] = useState(null);
   useEffect(() => {
-    fetch("appointmentOptions.json")
+    fetch("http://localhost:5000/appointmentOptions")
       .then((res) => res.json())
       .then((data) => setappointmentOptions(data));
   }, []);

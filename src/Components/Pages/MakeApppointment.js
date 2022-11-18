@@ -10,8 +10,8 @@ const MakeAppointment = () => {
             background: `url(${appointment})`
         }}
             >
-            <div className="hero">
-                <div className="hero-content flex-col lg:flex-row">
+            <div className="hero ">
+                <div className="hero-content flex-col lg:flex-row p-0">
                     <img src={doctor} alt="" className="-mt-32 hidden md:block lg:w-1/2 rounded-lg" />
                     <div>
                         <h4 className='text-lg text-primary font-bold'>Appointment</h4>
