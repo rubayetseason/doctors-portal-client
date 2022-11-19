@@ -1,14 +1,13 @@
 import React, { useContext } from "react";
 import { Navigate, useLocation } from "react-router-dom";
+import Loader from "../Components/Shared/Loader";
 import { AuthContext } from "../Context/AuthProvider";
 
 const PrivateRoute = ({ children }) => {
   const { user, loading } = useContext(AuthContext);
   const location = useLocation();
   if (loading) {
-    return (
-      <div className="w-16 h-16 my-20 mx-auto border-4 border-dashed rounded-full animate-spin border-primary"></div>
-    );
+    return <Loader></Loader>;
   }
   if (user) {
     return children;
