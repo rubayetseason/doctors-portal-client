@@ -17,26 +17,42 @@ const SignUp = () => {
   const { createUser, updateUser } = useContext(AuthContext);
 
   const handleSignUp = (data) => {
-    setSignUpError('');
+    setSignUpError("");
     createUser(data.email, data.password)
-        .then(result => {
-            const user = result.user;
-            console.log(user);
-            toast.success('User Created Successfully.')
-            const userInfo = {
-                displayName: data.name
-            }
-            updateUser(userInfo)
-                .then(() => {
-                    navigate('/');
-                 })
-                .catch(err => console.log(err));
-        })
-        .catch(error => {
-            console.log(error)
-            setSignUpError(error.message)
-        });
-}
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        toast.success("User Created Successfully.");
+        const userInfo = {
+          displayName: data.name,
+        };
+        updateUser(userInfo)
+          .then(() => {
+            saveUser(data.name, data.email);
+          })
+          .catch((err) => console.log(err));
+      })
+      .catch((error) => {
+        console.log(error);
+        setSignUpError(error.message);
+      });
+  };
+
+  const saveUser = (name, email) => {
+    const user = { name, email };
+    fetch("http://localhost:5000/users", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(user),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        navigate("/");
+        console.log("saved user", data);
+      });
+  };
   return (
     <div className="h-[400px] flex justify-center mt-14 mb-20 items-center">
       <div className="w-96 p-7 border-2 mt-14">
