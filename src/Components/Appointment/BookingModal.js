@@ -3,7 +3,7 @@ import { format } from "date-fns";
 import { AuthContext } from '../../Context/AuthProvider';
 import toast from 'react-hot-toast';
 
-const BookingModal = ({treatment, selectedDate, setTreatment}) => {
+const BookingModal = ({treatment, selectedDate, setTreatment, refetch}) => {
     const {name: treatmentName, slots} = treatment;
     const date = format(selectedDate, 'PP');
     const {user} = useContext(AuthContext);
@@ -37,7 +37,8 @@ const BookingModal = ({treatment, selectedDate, setTreatment}) => {
       console.log(data);
      if(data.acknowledged){
       setTreatment(null);
-      toast.success('Booking Confirmed')
+      toast.success('Booking Confirmed');
+      refetch();
      }
     })
     //send data to the server, once the data is set, close the modal and display toast
