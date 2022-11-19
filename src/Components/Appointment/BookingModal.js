@@ -40,6 +40,9 @@ const BookingModal = ({treatment, selectedDate, setTreatment, refetch}) => {
       toast.success('Booking Confirmed');
       refetch();
      }
+     else {
+      toast.error(data.message)
+     }
     })
     //send data to the server, once the data is set, close the modal and display toast
    
