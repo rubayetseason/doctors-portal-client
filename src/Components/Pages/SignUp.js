@@ -1,11 +1,13 @@
 import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthProvider";
 
 const SignUp = () => {
   const [signUpError, setSignUpError] = useState("");
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
@@ -15,25 +17,26 @@ const SignUp = () => {
   const { createUser, updateUser } = useContext(AuthContext);
 
   const handleSignUp = (data) => {
-    console.log(data);
+    setSignUpError('');
     createUser(data.email, data.password)
-      .then((result) => {
-        const user = result.user;
-        console.log(user);
-        setSignUpError("");
-        toast.success("User Created Successfully");
-        const userInfo = {
-          displayName: data.name,
-        };
-        updateUser(userInfo)
-          .then(() => {})
-          .catch((error) => console.log(error));
-      })
-      .catch((error) => {
-        console.log(error);
-        setSignUpError(error.message);
-      });
-  };
+        .then(result => {
+            const user = result.user;
+            console.log(user);
+            toast.success('User Created Successfully.')
+            const userInfo = {
+                displayName: data.name
+            }
+            updateUser(userInfo)
+                .then(() => {
+                    navigate('/');
+                 })
+                .catch(err => console.log(err));
+        })
+        .catch(error => {
+            console.log(error)
+            setSignUpError(error.message)
+        });
+}
   return (
     <div className="h-[400px] flex justify-center mt-14 mb-20 items-center">
       <div className="w-96 p-7 border-2 mt-14">
