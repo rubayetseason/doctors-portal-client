@@ -31,9 +31,9 @@ const AuthProvider = ({ children }) => {
     return signOut(auth);
   };
 
-  const updateUser = (userInfo) =>{
+  const updateUser = (userInfo) => {
     return updateProfile(auth.currentUser, userInfo);
-}
+  };
 
   useEffect(() => {
     const unsubscibe = onAuthStateChanged(auth, (currentUser) => {
