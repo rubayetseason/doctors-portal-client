@@ -49,10 +49,21 @@ const SignUp = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        navigate("/");
-        console.log("saved user", data);
+        getUserToken(email);
       });
   };
+
+  const getUserToken = email => {
+fetch(`http://localhost:5000/jwt?email=${email}`)
+.then(res => res.json())
+.then(data => {
+  if(data.accessToken){
+localStorage.setItem('accessToken', data.accessToken);
+    navigate("/");
+  }
+})
+  };
+
   return (
     <div className="h-[400px] flex justify-center mt-14 mb-20 items-center">
       <div className="w-96 p-7 border-2 mt-14">
