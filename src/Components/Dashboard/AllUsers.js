@@ -9,7 +9,17 @@ const AllUsers = () => {
             const data = await res.json();
             return data;
         }
-    })
+    });
+
+    const handleMakeAdmin = id => {
+fetch(`http://localhost:5000/users/admin/${id}`, {
+    method: 'PUT'
+})
+.then(res => res.json())
+.then(data => {
+    console.log(data);
+})
+    };
     return (
         <div>
             <h3 className="text-3xl mb-5">All Users</h3>
@@ -21,8 +31,8 @@ const AllUsers = () => {
         <th></th>
         <th>Name</th>
         <th>Email</th>
-        <th>Favorite Color</th>
-        <th>Favorite Color</th>
+        <th>Admin</th>
+        <th>Delete</th>
       </tr>
     </thead>
     <tbody>
@@ -31,8 +41,8 @@ const AllUsers = () => {
         <th>{i+1}</th>
         <td>{user.name}</td>
         <td>{user.email}</td>
-        <td>Blue</td>
-        <td>Blue</td>
+        <td><button onClick={() => handleMakeAdmin(user._id)} className='btn btn-success btn-sm'>Make Admin</button></td>
+        <td><button className='btn btn-error btn-sm'>Delete</button></td>
       </tr>)
   }
     </tbody>
