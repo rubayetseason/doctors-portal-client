@@ -1,13 +1,13 @@
 import { createBrowserRouter } from "react-router-dom";
 import Appointment from "../Components/Appointment/Appointment";
 import AllUsers from "../Components/Dashboard/AllUsers";
-import Dashboard from "../Components/Dashboard/Dashboard";
 import MyAppointment from "../Components/Dashboard/MyAppointment";
 import Home from "../Components/Pages/Home";
 import Login from "../Components/Pages/Login";
 import SignUp from "../Components/Pages/SignUp";
 import DashboardLayout from "../Layouts/DashboardLayout";
 import Main from "../Layouts/Main";
+import AdminRoute from "./AdminRoute";
 import PrivateRoute from "./PrivateRoute";
 
 export const router = createBrowserRouter([
@@ -42,7 +42,7 @@ export const router = createBrowserRouter([
       },
       {
         path: '/dashboard/allusers',
-        element: <AllUsers></AllUsers>
+        element: <AdminRoute><AllUsers></AllUsers></AdminRoute>
       },
     ]
   }
