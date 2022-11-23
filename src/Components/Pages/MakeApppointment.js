@@ -5,7 +5,7 @@ import PrimaryButton from '../Shared/PrimaryButton';
 
 const MakeAppointment = () => {
     return (
-        <section className='mt-32'
+        <section className='mt-32 p-10 md:p-0'
         style={{
             background: `url(${appointment})`
         }}
