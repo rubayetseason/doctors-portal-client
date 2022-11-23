@@ -6,7 +6,7 @@ import { AuthContext } from "../../Context/AuthProvider";
 const MyAppointment = () => {
   const { user } = useContext(AuthContext);
 
-  const url = `http://localhost:5000/bookings?email=${user?.email}`;
+  const url = `https://doctors-portal-server-rubayetseason.vercel.app/bookings?email=${user?.email}`;
 
   const { data: bookings = [] } = useQuery({
     queryKey: ["bookings", user?.email],
@@ -37,24 +37,26 @@ const MyAppointment = () => {
             </tr>
           </thead>
           <tbody>
-            {
-              bookings &&
-            bookings?.map((booking, index) => (
-              <tr key={booking._id}>
-                <th>{index + 1}</th>
-                <td>{user.displayName}</td>
-                <td>{booking.treatment}</td>
-                <td>{booking.appointmentDate}</td>
-                <td>{booking.slot}</td>
-                <td>{
-                booking.price && !booking.paid && <Link to={`/dashboard/payment/${booking._id}`}><button className="btn btn-outline btn-sm">Pay</button></Link>
-                }
-                {
-                  booking.price && booking.paid && <span className="text-green-600 font-bold">Paid</span>
-                }
-                </td>
-              </tr>
-            ))}
+            {bookings &&
+              bookings?.map((booking, index) => (
+                <tr key={booking._id}>
+                  <th>{index + 1}</th>
+                  <td>{user.displayName}</td>
+                  <td>{booking.treatment}</td>
+                  <td>{booking.appointmentDate}</td>
+                  <td>{booking.slot}</td>
+                  <td>
+                    {booking.price && !booking.paid && (
+                      <Link to={`/dashboard/payment/${booking._id}`}>
+                        <button className="btn btn-outline btn-sm">Pay</button>
+                      </Link>
+                    )}
+                    {booking.price && booking.paid && (
+                      <span className="text-green-600 font-bold">Paid</span>
+                    )}
+                  </td>
+                </tr>
+              ))}
           </tbody>
         </table>
       </div>

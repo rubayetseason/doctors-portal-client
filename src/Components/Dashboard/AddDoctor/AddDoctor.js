@@ -12,7 +12,9 @@ const AddDoctor = () => {
   const { data: specialties, isLoading } = useQuery({
     queryKey: ["specialty"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/appointmentSpecialty");
+      const res = await fetch(
+        "https://doctors-portal-server-rubayetseason.vercel.app/appointmentSpecialty"
+      );
       const data = await res.json();
       return data;
     },
@@ -45,20 +47,23 @@ const AddDoctor = () => {
           };
           console.log(doctor);
 
-          fetch('http://localhost:5000/doctors', {
-            method: 'POST',
-            headers: {
-              'content-type' : 'application/json',
-              authorization : `bearer ${localStorage.getItem('accessToken')}`
-            },
-            body: JSON.stringify(doctor)
-          })
-          .then(res => res.json())
-          .then(result => {
-            console.log(result);
-            toast.success('Doctor Added Successfully');
-            navigate('/dashboard/managedoctors')
-          })
+          fetch(
+            "https://doctors-portal-server-rubayetseason.vercel.app/doctors",
+            {
+              method: "POST",
+              headers: {
+                "content-type": "application/json",
+                authorization: `bearer ${localStorage.getItem("accessToken")}`,
+              },
+              body: JSON.stringify(doctor),
+            }
+          )
+            .then((res) => res.json())
+            .then((result) => {
+              console.log(result);
+              toast.success("Doctor Added Successfully");
+              navigate("/dashboard/managedoctors");
+            });
         }
       });
   };
