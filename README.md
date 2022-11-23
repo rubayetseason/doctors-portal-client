@@ -3,7 +3,7 @@
 An dental appointment website where users can get their respective oral appointment
 
 ## Live website link
-[Wild With Harry live website link](https://doctors-portal-ebd02.web.app/)
+[Doctor's Portal live website link](https://doctors-portal-ebd02.web.app/)
 [https://doctors-portal-ebd02.web.app/](https://doctors-portal-ebd02.web.app/)
 
 
